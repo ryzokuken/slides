@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ryzokuken/slides/issues"
   },
-  "homepage": "https://github.com/ryzokuken/slides#readme"
+  "homepage": "https://github.com/ryzokuken/slides#readme",
+  "dependencies": {
+    "reveal-md": "^5.1.0"
+  }
 }
