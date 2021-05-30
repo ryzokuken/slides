@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal-md</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/zenburn.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"># ECMA-402 Status Update
+
+### Ujjwal Sharma (@ryzokuken)
+### TC39 May 2021
+</script></section><section  data-markdown><script type="text/template">
+### Three normative PRs
+</script></section><section  data-markdown><script type="text/template">
+### Add hourCycle to opt before passing to FormatMatcher ([#571])
+
+* Authored by Long Ho (LHO).
+* Motivated by formatjs.
+* Add `hourCycle` information to the `formatOptions`.
+* **Allows tailoring of the implementation-defined operation `BestFitFormatMatcher` based on the hour cycle.**
+
+[#571]: https://github.com/tc39/ecma402/pull/571
+</script></section><section  data-markdown><script type="text/template">
+### Fix spec bugs in numberformat.html ([#572])
+
+* Authored by Shane Carr (SFC).
+* Motivated by [proposal-intl-numberformat-v3]; fixes errors introduced in 2020 in [proposal-unified-intl-numberformat].
+* Fixes `ToRawPrecision` and displays sign on negative infinity.
+* **Restores spec behavior to web reality.**
+
+[#572]: https://github.com/tc39/ecma402/pull/572
+[proposal-intl-numberformat-v3]: https://github.com/tc39/proposal-intl-numberformat-v3
+[proposal-unified-intl-numberformat]: https://github.com/tc39/proposal-unified-intl-numberformat
+</script></section><section  data-markdown><script type="text/template">
+### Fix TimeZoneName issue in FormatDateTimePattern ([#573])
+
+* Authored by Frank Tang (FYT).
+* Motivated by [proposal-intl-extend-timezonename], fixes [#515].
+* Improves/fixes `timeZoneName` handling.
+* Also potentially changes implementation-defined behavior.
+* **Allows `timeZoneName` to be outputted from `DateTimeFormat`.**
+
+[#515]: https://github.com/tc39/ecma402/issues/515
+[#573]: https://github.com/tc39/ecma402/pull/573
+[proposal-intl-extend-timezonename]: https://github.com/tc39/proposal-intl-extend-timezonename
+</script></section><section  data-markdown><script type="text/template">
+## TC39 consensus?
+
+</script></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
