@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/ryzokuken/slides#readme",
   "dependencies": {
-    "reveal-md": "^5.1.0"
+    "reveal-md": "^5.1.1"
   }
 }
