@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "reveal-md .",
-    "build": "reveal-md . --static docs",
+    "dev": "reveal-md content",
+    "build": "reveal-md content --static docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
