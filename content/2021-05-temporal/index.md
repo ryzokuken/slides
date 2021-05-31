@@ -69,7 +69,7 @@ What changed?
 
 ----
 
-<img src="public/object-model.svg"/>
+<img src="./object-model.svg"/>
 
 ----
 <!-- .slide: class="igalia-align-left igalia-text-medium" -->
@@ -110,7 +110,7 @@ What changed?
 
 ----
 
-![Persistence Model](./public/persistence-model.svg)
+![Persistence Model](./persistence-model.svg)
 
 ---
 <!-- .slide: data-section-cover -->
@@ -251,7 +251,7 @@ d.round({
 
 # Assignment Time 📋
 
-[![QR Code](public/sandbox.png)](https://codesandbox.io/embed/temporal-playhouse-55yg9)
+[![QR Code](./sandbox.png)](https://codesandbox.io/embed/temporal-playhouse-55yg9)
 
 ----
 <!-- .slide: class="igalia-align-left" -->
