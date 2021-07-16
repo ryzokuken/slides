@@ -3,6 +3,7 @@
   "slideNumber": "c/t",
   "height": 800,
   "minScale": 0.7,
+  "transition": "slide",
   "markdown": {
     "animateLists": true
   }
