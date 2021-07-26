@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Timestamp Extension Format for the Internet</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/github.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+# Timestamp Extension Format for the Internet
+
+### Ujjwal Sharma (@ryzokuken)
+### IETF 111, July 2021
+</script></section><section  data-markdown><script type="text/template">
+## Wait, who are you again?
+
+* ECMA TC39
+  * Standardizing ~ECMAScript~ JavaScript
+  * Google, Microsoft, Bloomberg, PayPal, …
+* Temporal Champions Group
+  * Standardizing `Date`
+  * Modern, ergonomic API for building date/time applications
+  * JavaScript veterans, Internationalization experts, …
+</script></section><section  data-markdown><script type="text/template">
+## History
+
+* Number of non-standard "zoned timestamp" formats
+* Temporal needs to add calendars to the mix
+* Champions designed a format inspired by BCP 47
+* Presented to CalConnect/ISO and CALEXT
+* [Presented to DISPATCH in IETF 110](https://ryzokuken.dev/slides/2021-03-ietf/)
+* Follow-up discussions led to SEDATE
+</script></section><section  data-markdown><script type="text/template">
+# What changed?
+
+* Initially came with a very ambitious proposal
+* More realistic goals now
+* Builds on top of 3339, updates **out-of-scope**
+* Temporal is Stage 3, implementations ongoing
+* In conversations with ISO for liason
+* Draft underwent another round of reviews
+</script></section><section  data-markdown><script type="text/template">
+## 2021-07-26T10:47:25Z
+</script></section><section  data-markdown><script type="text/template">
+## 2021-07-26T10:47:25Z[Europe/London]
+</script></section><section  data-markdown><script type="text/template">
+## 2021-07-26T10:47:25Z[Europe/London][u-ca=hebrew]
+</script></section><section  data-markdown><script type="text/template">
+## Why is this context useful?
+
+* Operations on an instant relies on context
+* The current model either assumes:
+    * No Information (Bad)
+    * UTC or ISO Calendar (Worse)
+* `now + 5 h` depends on the timezone
+* `now + 5 mo` depends on the calendar
+</script></section><section  data-markdown><script type="text/template">
+## Why this syntax?
+
+* The suffix should be optional
+* Time zone suffix from Java for compatibility
+* Generalized format inspired by BCP 47
+    * Namespaced in order to keep the RFC focussed
+    * Borrowed the IANA Registry pattern
+    * `key-value` replaced with `key=value` for parsing
+* Implemented in the Temporal polyfill, WIP in browsers
+</script></section><section  data-markdown><script type="text/template">
+## What's next?
+
+* Temporal intends to ship in browsers soon
+* Plan to adopt this before shipping
+* Please review the draft and send us your thoughts
+* Implementation details not finalized
+* Let's adopt this as soon as we can!
+</script></section><section  data-markdown><script type="text/template">
+# Thanks
+</script></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"transition":"slide","markdown":{"animateLists":true}}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
