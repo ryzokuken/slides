@@ -58,8 +58,8 @@
 
 * Operations on an instant relies on context
 * The current model either assumes:
-    * No Information (Bad)
-    * UTC or ISO Calendar (Worse)
+  * No Information (Bad)
+  * UTC or ISO Calendar (Worse)
 * `now + 5 h` depends on the timezone
 * `now + 5 mo` depends on the calendar
 </script></section><section  data-markdown><script type="text/template">
@@ -68,9 +68,9 @@
 * The suffix should be optional
 * Time zone suffix from Java for compatibility
 * Generalized format inspired by BCP 47
-    * Namespaced in order to keep the RFC focussed
-    * Borrowed the IANA Registry pattern
-    * `key-value` replaced with `key=value` for parsing
+  * Namespaced in order to keep the RFC focussed
+  * Borrowed the IANA Registry pattern
+  * `key-value` replaced with `key=value` for parsing
 * Implemented in the Temporal polyfill, WIP in browsers
 </script></section><section  data-markdown><script type="text/template">
 ## What's next?
