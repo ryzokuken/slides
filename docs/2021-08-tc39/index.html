@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>TC39 Demystified</title>
+    <link rel="shortcut icon" href="./../favicon.ico"/>
+    <link rel="stylesheet" href="./../dist/reveal.css" />
+    <link rel="stylesheet" href="./../dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="./../css/highlight/github.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section ><section data-markdown><script type="text/template">
+# TC39 Demystified 🔭
+
+## Ujjwal Sharma (@ryzokuken)
+## August 2021, JSLovers Delhi 🇮🇳
+</script></section><section data-markdown><script type="text/template">
+## About Me 👨
+
+* Ujjwal "Ryzokuken" Sharma
+* Compilers Hacker at Igalia
+* TC39 Delegate
+* ECMA-402 Editor
+* Node.js Core Collaborator
+* V8 Contributor
+* International Speaker
+</script></section><section data-markdown><script type="text/template">
+## About Igalia 💻
+
+* Software Consultancy
+* HQ in Galicia, Spain 🇪🇸
+* Free Software
+* TC39, W3C
+* Web Browsers
+* Compilers
+* Web Standards
+</script></section></section><section ><section data-markdown><script type="text/template">
+<img src="JS.png" style="max-width: 200px"/>
+</script></section><section data-markdown><script type="text/template">
+<img src="ES.png" style="max-width: 200px"/>
+</script></section><section data-markdown><script type="text/template">
+<img src="TC39.png" style="max-width: 200px"/>
+</script></section><section data-markdown><script type="text/template">
+## About TC39 🔍
+
+* ECMA Technical Committee
+* ECMAScript Language and Standard API
+  * ECMA-262 (JavaScript)
+  * ECMA-402 (Internationalization)
+  * ECMA-404 (JSON)
+* Different sub-groups
+  * TC39-TG2 (Internationalization)
+  * TC39-TG3 (Security)
+  * Inclusion ad-hoc group
+<!-- * Members -->
+<!--   * Browsers (Google) -->
+<!--   * Runtimes (Oracle) -->
+<!--   * Tooling (Babel) -->
+<!--   * Derivatives/Transpilers (TypeScript) -->
+<!--   * Large websites (Salesforce) -->
+<!--   * Academics -->
+<!--   * Frameworks and libraries -->
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Who? 👨‍🔧
+
+* Delegates
+  * Implementers
+  * Large websites
+  * Academics
+  * OpenJS Foundation
+* Invited Experts
+  * Subject matter exports
+  * Community representatives
+* Contributors
+* Community
+</script></section><section data-markdown><script type="text/template">
+## Where 🧭
+</script></section><section data-markdown><script type="text/template">
+![](ecma262.png)
+</script></section><section data-markdown><script type="text/template">
+![](ecma402.png)
+</script></section><section data-markdown><script type="text/template">
+## What? ⚙
+
+* Pull request to the standard GitHub repository
+* Meta and Markup changes
+* Editorial Changes
+  * Editor Group
+* Normative Changes
+* Proposals
+  * Authors and Champions
+  * Stage Process
+  * Reviewers
+  * Consensus
+</script></section><section data-markdown><script type="text/template">
+## When? ⌚
+
+* Quarterly meetings
+  * 4-day
+  * in-person
+* Light meetings in between
+  * 2-day
+  * online
+* Monthly ECMA-402 meeting
+* Smaller, more focussed meetings
+* Incubator calls
+* GitHub
+* Discourse
+</script></section><section data-markdown><script type="text/template">
+## How? 🤔
+
+* No voting
+* Consensus-based decision making
+  * Diverse set of people in the committee
+  * Work to satisfy everyone’s needs and goals
+  * Objections and concerns
+  * Backing rationales
+* No stakeholder kept over another
+* Don’t standardize things which aren’t ready
+</script></section><section data-markdown><script type="text/template">
+## Stage Process 🗃
+
+* Stage 0: Strawperson
+  * Just an idea
+* Stage 1: Proposal
+  * Describe shape of solution
+  * Identify potential blockers
+</script></section><section data-markdown><script type="text/template">
+## Stage Process 🗃
+
+* Stage 2: Draft
+  * Describe precise syntactic and semantic details
+* Stage 3: Candidate
+  * Further feedback from implementations and users
+* Stage 4: Finished
+  * Tested and ready for addition to the standard
+</script></section><section data-markdown><script type="text/template">
+## Building Consensus 💆
+
+* Authors develop the proposal with stakeholder input
+* Champions may act as a bridge between authors and TC39
+* Any aspects may be discussed, feedback may be given openly
+* Concerns raised early and asynchronously
+</script></section><section data-markdown><script type="text/template">
+## Building Consensus 💆
+
+* Consensus is given as an indicator of the current stage
+* A delegate may pose a constraint as necessary for advancement
+* Many constraints with rationales, committee may make a trade-off
+* Stage 3 consensus implies completeness and any design concerns should be raised before Stage 3
+</script></section></section><section ><section data-markdown><script type="text/template">
+# A deeper look into the stage process 🔬
+</script></section><section data-markdown><script type="text/template">
+## Stage 3: Temporal ⏳
+
+* Many many problems with the legacy `Date` object
+* Libraries try to easy the pain, with different levels of effectiveness
+* Various stakeholders come together and decide to fix this
+* Long discussion process to go through semantic details
+* Champions group reached consensus on API details
+* Diverse group of stakeholders invested
+* Reached Stage 3 in early 2021, implementations ongoing
+</script></section><section data-markdown><script type="text/template">
+## Stage 3: Temporal ⏳
+
+```javascript
+function* calculateDailyOccurrence(sd, pt, tz) {
+  for (let date = sd; ; date = date.add({ days: 1 })) {
+    yield date.toZonedDateTime({ pt, tz }).toInstant();
+  }
+}
+
+const sd = Temporal.PlainDate.from('2017-03-10');
+const time = Temporal.PlainTime.from('08:00');
+const tz = Temporal.TimeZone.from('America/Los_Angeles');
+const iter = calculateDailyOccurrence(sd, time, tz);
+
+assert.equal(iter.next().value.toString(), '2017-03-10T16:00:00Z');
+assert.equal(iter.next().value.toString(), '2017-03-11T16:00:00Z');
+// DST change:
+assert.equal(iter.next().value.toString(), '2017-03-12T15:00:00Z');
+assert.equal(iter.next().value.toString(), '2017-03-13T15:00:00Z');
+```
+</script></section><section data-markdown><script type="text/template">
+## Stage 2: Records and Tuples 📂
+
+* New collection data types
+* Immutable versions of plain objects and arrays
+* Adds compound types that are compared by value
+* Allows compound types to be used in `Set` and `Map`...
+* `JSON.parseImmutable`
+* Literal syntax supported via a babel plugin
+</script></section><section data-markdown><script type="text/template">
+## Stage 2: Records and Tuples 📂
+
+```javascript
+const map = new Set([
+    #{ x: 0, y: 0 },
+    #[1, 1],
+]);
+
+console.log(map.has(#{ x: 0, y: 0 })); // true
+console.log(map.has(#{ x: 1, y: 1 })); // false
+console.log(map.has(#[0, 0])); // false
+console.log(map.has(#[1, 1])); // true
+```
+</script></section><section data-markdown><script type="text/template">
+## Stage 1: Decimal 🔢
+
+* Number is an IEEE 754 64-bit float
+* Base 2 fractions can't represent .1 or .2 properly
+* ⅓ in base 10: closest we can get is .3333333…
+* Three data models:
+  * Fraction
+  * BigDecimal
+  * Decimal128
+* BigDecimal has problems: What should 1m/3m be?
+* What about both?
+</script></section><section data-markdown><script type="text/template">
+## Stage 1: Decimal 🔢
+
+```javascript
+function calculateBill(items, tax) {
+  let total = 0m;
+  for (let { price, count } of items) {
+    total += price * BigDecimal(count);
+  }
+  return BigDecimal.round(
+    total * (1m + tax),
+    { maximumFractionDigits: 2, round: "up" }
+  );
+}
+
+let items = [
+  { price: 1.25m, count: 5 },
+  { price: 5m, count: 1 }
+];
+let tax = .0735m;
+console.log(calculateBill(items, tax));
+```
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Official communication channels 💬
+
+* GitHub
+* Matrix
+* Discourse
+* Incubator Calls
+* Website
+</script></section><section data-markdown><script type="text/template">
+![](./tc39-jp.png)
+</script></section><section data-markdown><script type="text/template">
+![](discourse.png)
+</script></section><section data-markdown><script type="text/template">
+## TC39 Outreach Groups 📣
+
+* TC39 Outreach to important focus groups
+* Tools and Transpilers
+* Frameworks
+* Educators
+  * Work on educational material
+* Monthly calls
+* Discuss ongoing TC39 proposals
+</script></section><section data-markdown><script type="text/template">
+## How do I get involved? 👩‍🏭
+
+* Issue trackers of any relevant proposals
+* Contribute to documentation on MDN
+* Discourse to discuss new proposals
+* File issues, create pull requests and write tests
+* Your employer can become a member
+* Join as an invited expert if you care about a specific topic
+</script></section><section data-markdown><script type="text/template">
+![](test262.png)
+</script></section><section data-markdown><script type="text/template">
+![](test262test.png)
+</script></section><section data-markdown><script type="text/template">
+![](mdn.png)
+</script></section><section data-markdown><script type="text/template">
+![](spec.png)
+</script></section></section><section  data-markdown><script type="text/template">
+# धन्यवाद! 🙏
+</script></section></div>
+    </div>
+
+    <script src="./../dist/reveal.js"></script>
+
+    <script src="./../plugin/markdown/markdown.js"></script>
+    <script src="./../plugin/highlight/highlight.js"></script>
+    <script src="./../plugin/zoom/zoom.js"></script>
+    <script src="./../plugin/notes/notes.js"></script>
+    <script src="./../plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"transition":"slide","markdown":{"animateLists":true}}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
