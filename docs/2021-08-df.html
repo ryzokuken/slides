@@ -78,6 +78,11 @@ new Intl.DurationFormat("en", { style: "digital", fractionalDigits: 2 }).format(
 -   Consecutive units with the `"numeric"` style can be displayed as a decimal by using `fractionalDigits`.
 -   Truncation of the value is not allowed in any way except for the truncation of the least significant bits via `fractionalDigits`.
 </script></section></section><section  data-markdown><script type="text/template">
+## Open Questions ❓
+
+-    Should second be the smallest unit accepted? ([#64](https://github.com/tc39/proposal-intl-duration-format/issues/64))
+-    Should we support fractional minutes and hours? ([#65](https://github.com/tc39/proposal-intl-duration-format/issues/65))
+</script></section><section  data-markdown><script type="text/template">
 ## Progress and Next Steps ⌛
 
 -   Had long sessions to come up with the design and modify it to accomodate all edge-cases.
