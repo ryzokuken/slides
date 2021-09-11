@@ -1,17 +1,26 @@
----
-title: TC39 Demystified, Rif Voronezh
-theme: night
-highlightTheme: monokai
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>TC39 Demystified, Rif Voronezh</title>
+    <link rel="shortcut icon" href="./../favicon.ico"/>
+    <link rel="stylesheet" href="./../dist/reveal.css" />
+    <link rel="stylesheet" href="./../dist/theme/night.css" id="theme" />
+    <link rel="stylesheet" href="./../css/highlight/monokai.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
 
 ## TC39 Demystified 🔭
 
 ### Ujjwal Sharma (@ryzokuken)
 
 ### September 2021, риф воронеж 🇷🇺
-
----
-
+</script></section><section ><section data-markdown><script type="text/template">
 ## About Me 👨
 
 -   Ujjwal "Ryzokuken" Sharma
@@ -21,9 +30,7 @@ highlightTheme: monokai
 -   Node.js Core Collaborator
 -   V8 Contributor
 -   International Speaker
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## About Igalia 💻
 
 -   Software Consultancy
@@ -33,21 +40,13 @@ highlightTheme: monokai
 -   Web Browsers
 -   Compilers
 -   Web Standards
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 <img src="JS.png" style="max-width: 200px"/>
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 <img src="ES.png" style="max-width: 200px"/>
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 <img src="TC39.png" style="max-width: 200px"/>
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## About TC39 🔍
 
 -   ECMA Technical Committee
@@ -67,9 +66,7 @@ highlightTheme: monokai
         <!--   * Large websites (Salesforce) -->
         <!--   * Academics -->
         <!--   * Frameworks and libraries -->
-
----
-
+</script></section></section><section  data-markdown><script type="text/template">
 ## Who? 👨‍🔧
 
 -   Delegates
@@ -82,21 +79,13 @@ highlightTheme: monokai
     -   Community representatives
 -   Contributors
 -   Community
-
----
-
+</script></section><section ><section data-markdown><script type="text/template">
 ## Where 🧭
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ![](ecma262.png)
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ![](ecma402.png)
-
----
-
+</script></section></section><section  data-markdown><script type="text/template">
 ## What? ⚙
 
 -   Pull request to the standard GitHub repository
@@ -109,9 +98,7 @@ highlightTheme: monokai
     -   Stage Process
     -   Reviewers
     -   Consensus
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## When? ⌚
 
 -   Quarterly meetings
@@ -125,9 +112,7 @@ highlightTheme: monokai
 -   Incubator calls
 -   GitHub
 -   Discourse
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## How? 🤔
 
 -   No voting
@@ -138,9 +123,7 @@ highlightTheme: monokai
     -   Backing rationales
 -   No stakeholder kept over another
 -   Don’t standardize things which aren’t ready
-
----
-
+</script></section><section ><section data-markdown><script type="text/template">
 ## Stage Process 🗃
 
 -   Stage 0: Strawperson
@@ -148,9 +131,7 @@ highlightTheme: monokai
 -   Stage 1: Proposal
     -   Describe shape of solution
     -   Identify potential blockers
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## Stage Process 🗃
 
 -   Stage 2: Draft
@@ -159,31 +140,23 @@ highlightTheme: monokai
     -   Further feedback from implementations and users
 -   Stage 4: Finished
     -   Tested and ready for addition to the standard
-
----
-
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## Building Consensus 💆
 
 -   Authors develop the proposal with stakeholder input
 -   Champions may act as a bridge between authors and TC39
 -   Any aspects may be discussed, feedback may be given openly
 -   Concerns raised early and asynchronously
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## Building Consensus 💆
 
 -   Consensus is given as an indicator of the current stage
 -   A delegate may pose a constraint as necessary for advancement
 -   Many constraints with rationales, committee may make a trade-off
 -   Stage 3 consensus implies completeness and any design concerns should be raised before Stage 3
-
----
-
+</script></section></section><section  data-markdown><script type="text/template">
 # A deeper look into the stage process 🔬
-
----
-
+</script></section><section ><section data-markdown><script type="text/template">
 ## Stage 3: Temporal ⏳
 
 -   Many many problems with the legacy `Date` object
@@ -193,9 +166,7 @@ highlightTheme: monokai
 -   Champions group reached consensus on API details
 -   Diverse group of stakeholders invested
 -   Reached Stage 3 in early 2021, implementations ongoing
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## Stage 3: Temporal ⏳
 
 ```javascript
@@ -216,9 +187,7 @@ assert.equal(iter.next().value.toString(), "2017-03-11T16:00:00Z")
 assert.equal(iter.next().value.toString(), "2017-03-12T15:00:00Z")
 assert.equal(iter.next().value.toString(), "2017-03-13T15:00:00Z")
 ```
-
----
-
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## Stage 2: Records and Tuples 📂
 
 -   New collection data types
@@ -227,9 +196,7 @@ assert.equal(iter.next().value.toString(), "2017-03-13T15:00:00Z")
 -   Allows compound types to be used in `Set` and `Map`...
 -   `JSON.parseImmutable`
 -   Literal syntax supported via a babel plugin
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## Stage 2: Records and Tuples 📂
 
 ```javascript
@@ -240,9 +207,7 @@ console.log(map.has(#{ x: 1, y: 1 })) // false
 console.log(map.has(#[0, 0])) // false
 console.log(map.has(#[1, 1])) // true
 ```
-
----
-
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## Stage 1: Decimal 🔢
 
 -   Number is an IEEE 754 64-bit float
@@ -254,9 +219,7 @@ console.log(map.has(#[1, 1])) // true
     -   Decimal128
 -   BigDecimal has problems: What should 1m/3m be?
 -   What about both?
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## Stage 1: Decimal 🔢
 
 ```javascript
@@ -278,9 +241,7 @@ let items = [
 let tax = 0.0735m
 console.log(calculateBill(items, tax))
 ```
-
----
-
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## Official communication channels 💬
 
 -   GitHub
@@ -288,17 +249,11 @@ console.log(calculateBill(items, tax))
 -   Discourse
 -   Incubator Calls
 -   Website
-
-----
-
-![](./tc39-jp.png)
-
-----
-
+</script></section><section data-markdown><script type="text/template">
+![](./tc39-ru.png)
+</script></section><section data-markdown><script type="text/template">
 ![](discourse.png)
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ## TC39 Outreach Groups 📣
 
 -   TC39 Outreach to important focus groups
@@ -308,9 +263,7 @@ console.log(calculateBill(items, tax))
     -   Work on educational material
 -   Monthly calls
 -   Discuss ongoing TC39 proposals
-
----
-
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## How do I get involved? 👩‍🏭
 
 -   Issue trackers of any relevant proposals
@@ -319,23 +272,65 @@ console.log(calculateBill(items, tax))
 -   File issues, create pull requests and write tests
 -   Your employer can become a member
 -   Join as an invited expert if you care about a specific topic
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ![](test262.png)
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ![](test262test.png)
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ![](mdn.png)
-
-----
-
+</script></section><section data-markdown><script type="text/template">
 ![](spec.png)
-
----
-
+</script></section></section><section  data-markdown><script type="text/template">
 # Спасибо! 🙏
+</script></section></div>
+    </div>
+
+    <script src="./../dist/reveal.js"></script>
+
+    <script src="./../plugin/markdown/markdown.js"></script>
+    <script src="./../plugin/highlight/highlight.js"></script>
+    <script src="./../plugin/zoom/zoom.js"></script>
+    <script src="./../plugin/notes/notes.js"></script>
+    <script src="./../plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"transition":"slide","markdown":{"animateLists":true}}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
