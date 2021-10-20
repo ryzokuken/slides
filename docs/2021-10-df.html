@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>DurationFormat Advancement</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/night.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/monokai.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+## `DurationFormat` Advancement ⏲
+
+### Ujjwal Sharma (@ryzokuken)
+
+### TC39 October 2021
+</script></section><section  data-markdown><script type="text/template">
+# Recap
+</script></section><section ><section data-markdown><script type="text/template">
+## Introducing the new design 🆕
+
+-   Works similarly to the old design for common edge cases:
+    -   Easy to specify base style.
+    -   All old styles supported.
+    -   `"digital"` works as you'd expect out of the box.
+    -   Truncating part of the value still _NOT_ supported (with a catch).
+</script></section><section data-markdown><script type="text/template">
+## Introducing the new design 🆕
+
+-   New, improved semantics:
+    -   Allow unit-specific style akin to `DateTimeFormat`.
+    -   Allow per-unit display setting to always display certain units.
+    -   Defaults that "just work".
+    -   Better support for fractional values.
+</script></section></section><section  data-markdown><script type="text/template">
+## Example 🔭
+
+```javascript
+new Intl.DurationFormat("en").format("P12Y34MT12M34S")
+// 12 yr 34 mo 12 min 34 sec
+new Intl.DurationFormat("en", { style: "digital" }).format("P12Y24MT12M24S")
+// 12 y 34 m 12:34
+new Intl.DurationFormat("en", { style: "digital", fractionalDigits: 2 }).format(
+    "PT12M34.567S"
+)
+// 12:34.56
+```
+</script></section><section ><section data-markdown><script type="text/template">
+## Semantics: Highlights 📰
+</script></section><section data-markdown><script type="text/template">
+### Style 👗
+
+-   There is a _base_ style. This is `"short"` by default.
+-   Styles can be customized per-unit.
+    -   The default style for any unit is determined by the value of the base style.
+</script></section><section data-markdown><script type="text/template">
+### Display 🖥️
+
+-   You can configure when to display a particular unit.
+    -   All zero units are hidden by default.
+    -   When the style is explicitly specified, they are always displayed by default.
+</script></section><section data-markdown><script type="text/template">
+### Fractions 🔢
+
+-   Consecutive units with the `"numeric"` style can be displayed as a decimal by using `fractionalDigits`.
+-   Truncation of the value is not allowed in any way except for the truncation of the least significant bits via `fractionalDigits`.
+</script></section></section><section  data-markdown><script type="text/template">
+## Open Questions ❓
+
+-    Should second be the smallest unit accepted? ([#64](https://github.com/tc39/proposal-intl-duration-format/issues/64))
+-    Should we support fractional minutes and hours? ([#65](https://github.com/tc39/proposal-intl-duration-format/issues/65))
+</script></section><section  data-markdown><script type="text/template">
+## Current Status
+
+* TODO
+</script></section><section  data-markdown><script type="text/template">
+# Stage 3? 
+</script></section><section  data-markdown><script type="text/template">
+# Thanks! 🙏
+</script></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"transition":"slide","markdown":{"animateLists":true}}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
