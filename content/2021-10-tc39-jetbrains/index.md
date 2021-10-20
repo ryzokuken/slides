@@ -8,7 +8,7 @@ highlightTheme: monokai
 
 ### Ujjwal Sharma (@ryzokuken)
 
-### September 2021, JetBrains JavaScript Day 🇷🇺
+### September 2021, JetBrains JavaScript Day 🌐
 
 ---
 
@@ -25,6 +25,7 @@ highlightTheme: monokai
 -   Node.js Core Collaborator
 -   V8 Contributor
 -   International Speaker
+
 </div>
 
 ----
