@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>My dev environment is the GOAT</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/night.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/github.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+## My dev environment is the GOAT 🐐
+
+### Ujjwal "Ryzokuken" Sharma
+### Compilers Codecamp
+</script></section><section  data-markdown><script type="text/template">
+## Hello, there! 👋
+
+![](ujjwal2.jpg)
+</script></section><section  data-markdown><script type="text/template">
+## I have a text editor, now what?
+
+* Text editors are great, but writing code is a bit more complicated than just that.
+* A bunch of additional features make life easier though.
+    * Autocomplete
+    * Linting
+    * Go to definition
+    * Find references
+    * Documentation on hover
+* IDEs? 👀
+</script></section><section  data-markdown><script type="text/template">
+## Language servers to the rescue! 🚒
+
+* One IDE per lanugage/stack? (👀 JetBrains)
+* One editor to rule them all?
+* The need for a more modular solution.
+* Standalone language servers.
+* Language Server Protocol.
+</script></section><section  data-markdown><script type="text/template">
+## Language servers to the rescue! 🚒
+
+![](https://i.imgur.com/JxFzLlR.png)
+</script></section><section  data-markdown><script type="text/template">
+## LSP for my favorite editor 📄
+
+![](https://i.imgur.com/iuzrCmd.png)
+</script></section><section  data-markdown><script type="text/template">
+## LSP for my favorite editor 📄
+
+* Vim has a plugin for LSP, called `vim-lsp`.
+* NeoVim has LSP support inbuilt.
+* If you use non-default plugins, they may support LSP too:
+    * Completion (YCM/Deoplete/CoC)
+    * Linting and Fixing (Ale)
+    * Viewing and Finding Tags (Vista/Tagbar)
+</script></section><section  data-markdown><script type="text/template">
+## So, which servers do you use?
+
+* C/C++ - `clangd`, `cpplint`
+* Rust - `rust-analyzer`, `clippy`
+* JavaScript - `tsserver`, `prettier`
+* Python - `pyright`, `flake8`
+* Ruby - `solargraph`
+</script></section><section  data-markdown><script type="text/template">
+# Thanks! 🙏
+</script></section><section  data-markdown><script type="text/template">
+# Questions? ❓</script></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"transition":"slide","markdown":{"animateLists":true}}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
