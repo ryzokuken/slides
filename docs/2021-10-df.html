@@ -22,7 +22,7 @@
 ### TC39 October 2021
 </script></section><section  data-markdown><script type="text/template">
 # Recap
-</script></section><section ><section data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ## Introducing the new design 🆕
 
 -   Works similarly to the old design for common edge cases:
@@ -30,7 +30,7 @@
     -   All old styles supported.
     -   `"digital"` works as you'd expect out of the box.
     -   Truncating part of the value still _NOT_ supported (with a catch).
-</script></section><section data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ## Introducing the new design 🆕
 
 -   New, improved semantics:
@@ -38,7 +38,7 @@
     -   Allow per-unit display setting to always display certain units.
     -   Defaults that "just work".
     -   Better support for fractional values.
-</script></section></section><section  data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ## Example 🔭
 
 ```javascript
@@ -51,43 +51,45 @@ new Intl.DurationFormat("en", { style: "digital", fractionalDigits: 2 }).format(
 )
 // 12:34.56
 ```
-</script></section><section ><section data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ## Semantics: Highlights 📰
-</script></section><section data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ### Style 👗
 
 -   There is a _base_ style. This is `"short"` by default.
 -   Styles can be customized per-unit.
     -   The default style for any unit is determined by the value of the base style.
-</script></section><section data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ### Display 🖥️
 
 -   You can configure when to display a particular unit.
     -   All zero units are hidden by default.
     -   When the style is explicitly specified, they are always displayed by default.
-</script></section><section data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ### Fractions 🔢
 
 -   Consecutive units with the `"numeric"` style can be displayed as a decimal by using `fractionalDigits`.
 -   Truncation of the value is not allowed in any way except for the truncation of the least significant bits via `fractionalDigits`.
-</script></section></section><section  data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
 ## Open Questions ❓
 
--    Should second be the smallest unit accepted? ([#64](https://github.com/tc39/proposal-intl-duration-format/issues/64))
--    Should we support fractional minutes and hours? ([#65](https://github.com/tc39/proposal-intl-duration-format/issues/65))
+-   Should second be the smallest unit accepted? ([#64](https://github.com/tc39/proposal-intl-duration-format/issues/64))
+    -   Answer: No, you can display all units until nanoseconds.
+-   Should we support fractional minutes and hours? ([#65](https://github.com/tc39/proposal-intl-duration-format/issues/65))
+    -   Answer: Not yet, but it could be done in a follow-up if requested.
 </script></section><section  data-markdown><script type="text/template">
 ## Current Status
 
-* Spec review
-    * Justin Grant
-    * Frank Tang
-    * Michael Ficarra
-    * Ron Buckton
-    * Ross Kirsling
-* All comments addressed so far.
-* No outstanding normative comments.
+-   Spec review
+    -   Justin Grant
+    -   Frank Tang
+    -   Michael Ficarra
+    -   Ron Buckton
+    -   Ross Kirsling
+-   All comments addressed so far.
+-   No outstanding normative comments.
 </script></section><section  data-markdown><script type="text/template">
-# Stage 3? 
+# Stage 3?
 </script></section><section  data-markdown><script type="text/template">
 # Thanks! 🙏
 </script></section></div>
