@@ -1,4 +1,5 @@
 {
   "theme": "white",
-  "highlightTheme": "github"
+  "highlightTheme": "github",
+  "template": "./assets/footer-template.html"
 }
