@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="{{{themeUrl}}}" id="theme" />
     <link rel="stylesheet" href="{{{base}}}{{{highlightThemeUrl}}}" />
 
+    <style>
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    </style>
+
     {{#cssPaths}}
     <link rel="stylesheet" href="{{{.}}}" />
     {{/cssPaths}}
