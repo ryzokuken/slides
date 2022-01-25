@@ -5,11 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>reveal-md</title>
-    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./dist/reveal.css" />
     <link rel="stylesheet" href="./dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="./css/highlight/github.css" />
 
+    <style>
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    </style>
+
+
+
+    <style>
+        #footer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-family: 'Iosevka Fixed', monospace;
+            font-size: 0.8em;
+        }
+    </style>
   </head>
   <body>
     <div class="reveal">
@@ -225,6 +243,7 @@ nf.formatRange(2.999, 3.001);  // "~+€3.00"
 </script></section><section  data-markdown><script type="text/template">
 # Thanks! 🙏
 </script></section></div>
+      <div id="footer">@ryzokuken</div>
     </div>
 
     <script src="./dist/reveal.js"></script>

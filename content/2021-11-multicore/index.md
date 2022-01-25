@@ -47,11 +47,21 @@ title: Multicore JS
 
 ## Why multicore JS? 👨‍💻
 
+-   JavaScript was designed in 1995 (16 years ago)
 -   CPU hardware is scaling with multi-core, big/little rather than frequency
 -   The client side is moving to the Web
--   JS and Wasm are taking over servers too!
+-   JS and WASM are taking over servers too!
     -   e.g., Fastly's and CloudFlare's models
 -   Important to expose hardware capabilities to software
+
+---
+
+## Why do I care? 😳
+
+-   Your users use a mobile phone
+-   You run JS or WASM on a server
+-   You build computationally heavy web applications
+-   You want to utilize full hardware capabilties.
 
 ---
 

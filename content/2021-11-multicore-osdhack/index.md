@@ -1,45 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-    <title>Multicore JS</title>
-    <link rel="shortcut icon" href="./../favicon.ico" />
-    <link rel="stylesheet" href="./../dist/reveal.css" />
-    <link rel="stylesheet" href="./../dist/theme/white.css" id="theme" />
-    <link rel="stylesheet" href="./../css/highlight/github.css" />
-
-    <style>
-      .columns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-    </style>
-
-
-
-    <style>
-        #footer {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            font-family: 'Iosevka Fixed', monospace;
-            font-size: 0.8em;
-        }
-    </style>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template">
+---
+title: Multicore JS
+---
 ## Multicore JS 🚀
 
 ### Past, Present and Future
 
 ### Ujjwal Sharma (@ryzokuken)
 
-#### HolyJS Moscow 2021 🇷🇺
-</script></section><section  data-markdown><script type="text/template">
+#### OSDHack 22
+
+---
+
 ## About Me 👦
 
 <div class="columns" style="grid-template-columns: 1fr 2fr">
@@ -55,7 +26,9 @@
 -   International Speaker
 
 </div>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## About Igalia 💼
 
 -   Software Consultancy
@@ -65,9 +38,13 @@
 -   Web Browsers 🌐
 -   Compilers
 -   Web Standards 📚
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Igalia 💖 Bloomberg 💖 Google
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Why multicore JS? 👨‍💻
 
 -   JavaScript was designed in 1995 (16 years ago)
@@ -76,14 +53,18 @@
 -   JS and WASM are taking over servers too!
     -   e.g., Fastly's and CloudFlare's models
 -   Important to expose hardware capabilities to software
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Why do I care? 😳
 
 -   Your users use a mobile phone
 -   You run JS or WASM on a server
 -   You build computationally heavy web applications
 -   You want to utilize full hardware capabilties.
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Old news ⏳
 
 -   High-level async constructs (allows work in the background)
@@ -92,61 +73,85 @@
 -   MessageChannel
 -   `async`/`await`
 -   WebAssembly MVP
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Failed attempts 😿
 
 -   ParallelJS
 -   SIMD.js
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Recent wins 🏆
 
 -   Atomics and SAB
 -   `WeakRef`
 -   WASM Threading
 -   WASM SIMD
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Are standards a good place to get stuff done? 😅
 
 -   Project Fugu shows that multi-implementer standards aren't the only way to ship
 -   However, the JS and Wasm world does operate on a lockstep model
 -   Many big efforts have successfully been developed in standards bodies and then shipped broadly
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Are standards a good place to get stuff done? 😅
 
 -   Important to have a coherent whole for JS and Wasm
 -   JS/Wasm engine teams have historically been more conservative about implementing non-standard things than higher levels of Chromium
     -   When this path was not taken, it is seen as a mistake, e.g., PJS and strong mode
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Concurrent JS 🐎
 
 ### A vision for the future of JavaScript
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## A Tale of two concurrency models ♻
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Web-like 🕸
 
 -   Run-to-completion (`Workers`)
 -   Message-passing (`postMessage`)
 -   Async APIs (`Promises`)
 -   No data races, data isolation
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Thread-like 🧵
 
 -   Sync APIs, manual synchronization (Atomics)
 -   Data races, shared memory (SABs)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Web-like 🕸
 
 ![](./diagram-web.png)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Thread-like 🧵
 
 ![](./diagram-thread.png)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Reality
 
 ![](./diagram-mixed.png)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Web-like 🕸
 
 <div class="columns" style="grid-template-columns: 2fr 1fr">
@@ -170,7 +175,9 @@
 
 </div>
 </div>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### Thread-like 🧵
 
 <div class="columns" style="grid-template-columns: 1.5fr 2fr">
@@ -196,11 +203,17 @@
 
 </div>
 </div>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Let's improve both models simultaneously! 😇
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 # Roadmap 🛣🗺
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Phase 1
 
 <div class="columns">
@@ -220,7 +233,9 @@
 *   Ability to spawn threads
 </div>
 </div>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Phase 1
 
 Actually, we're done here! ✅
@@ -230,7 +245,9 @@ Actually, we're done here! ✅
 -   Workers
 -   `SharedArrayBuffer`
 -   Atomics
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Phase 2
 
 <div class="columns">
@@ -251,7 +268,9 @@ Actually, we're done here! ✅
 
 </div>
 </div>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Phase 2 🕸
 
 Designed to address biggest observed pain points
@@ -264,7 +283,9 @@ Designed to address biggest observed pain points
     -   Often requires serialization/deserialization
     -   Identity discontinuity
 -   Transferring code is basically not possible, we transfer strings
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Proposal: Module Blocks
 
 Aims to solve: Ergonomic sharing of code
@@ -280,7 +301,9 @@ assert(moduleExports.y === 1);
 
 assert(await import(moduleBlock) === moduleExports);
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Upcoming Proposal: Shared Disjoint Heaps
 
 Aims to solve: Ergonomic and performant sharing of data and code
@@ -289,14 +312,18 @@ Aims to solve: Ergonomic and performant sharing of data and code
 -   Agent-local heaps can point into shareable heaps
 -   Shareable heaps cannot point into agent-local heaps
 -   Unit of sharing is transferable heap
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Phase 2 🧵
 
 Also designed to address biggest observed pain points
 
 -   Nobody knows how to use SABs and Atomics well
 -   Impedance mismatch too high
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Proposal: Structs
 
 Aims to solve: Higher-level objects that allow concurrent access
@@ -314,7 +341,9 @@ box.x = 42;  // x is declared
 assertThrows(() => { box.y = 8.8; });       // structs are sealed
 assertThrows(() => { box.__proto__ = {} }); // structs are sealed
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Future Phase
 
 <div class="columns">
@@ -337,64 +366,15 @@ assertThrows(() => { box.__proto__ = {} }); // structs are sealed
 
 </div>
 </div>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Special Thanks 🙇
 
 -   Daniel Ehrenberg
 -   Shu-yu Guo
 -   The organizers and programme committee
-</script></section><section  data-markdown><script type="text/template">
-# спасибо! 🙏
-</script></section></div>
-      <div id="footer">@ryzokuken</div>
-    </div>
 
-    <script src="./../dist/reveal.js"></script>
+---
 
-    <script src="./../plugin/markdown/markdown.js"></script>
-    <script src="./../plugin/highlight/highlight.js"></script>
-    <script src="./../plugin/zoom/zoom.js"></script>
-    <script src="./../plugin/notes/notes.js"></script>
-    <script src="./../plugin/math/math.js"></script>
-    <script>
-      function extend() {
-        var target = {};
-        for (var i = 0; i < arguments.length; i++) {
-          var source = arguments[i];
-          for (var key in source) {
-            if (source.hasOwnProperty(key)) {
-              target[key] = source[key];
-            }
-          }
-        }
-        return target;
-      }
-
-      // default options to init reveal.js
-      var defaultOptions = {
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        transition: 'default', // none/fade/slide/convex/concave/zoom
-        plugins: [
-          RevealMarkdown,
-          RevealHighlight,
-          RevealZoom,
-          RevealNotes,
-          RevealMath
-        ]
-      };
-
-      // options from URL query string
-      var queryOptions = Reveal().getQueryHash() || {};
-
-      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"transition":"slide","markdown":{"animateLists":true}}, queryOptions);
-    </script>
-
-
-    <script>
-      Reveal.initialize(options);
-    </script>
-  </body>
-</html>
+# Thanks! 🙏

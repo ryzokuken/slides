@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>My dev environment is the GOAT</title>
+    <title>reveal-md</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./dist/reveal.css" />
-    <link rel="stylesheet" href="./dist/theme/night.css" id="theme" />
+    <link rel="stylesheet" href="./dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="./css/highlight/github.css" />
 
     <style>
@@ -31,64 +31,36 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template">
+      <div class="slides"><section  data-markdown><script type="text/template"># ECMA-402 Status Update
 
-## My dev environment is the GOAT 🐐
+### Ujjwal Sharma (@ryzokuken)
+### TC39 January 2022
+</script></section><section  data-markdown><script type="text/template">
+### Two normative PRs
+</script></section><section  data-markdown><script type="text/template">
+### Normative: Add new numbering system "tnsa" ([#614])
 
-### Ujjwal "Ryzokuken" Sharma
-### Compilers Codecamp
-</script></section><section  data-markdown><script type="text/template">
-## Hello, there! 👋
+* Authored by André Bargull.
+* The Tangsa script ("Tnsa") is a new addition in Unicode 14.
+* Released in ICU 70.1 (Nov 2021).
 
-![](ujjwal2.jpg)
+[#614]: https://github.com/tc39/ecma402/pull/614
 </script></section><section  data-markdown><script type="text/template">
-## I have a text editor, now what?
+### Normative: Disallow '_' for calendar , referring to UTS35 ([#647])
 
-* Text editors are great, but writing code is a bit more complicated than just that.
-* A bunch of additional features make life easier though.
-    * Autocomplete
-    * Linting
-    * Go to definition
-    * Find references
-    * Documentation on hover
-* IDEs? 👀
-</script></section><section  data-markdown><script type="text/template">
-## Language servers to the rescue! 🚒
+* Authored by Frank Tang.
 
-* One IDE per lanugage/stack? (👀 JetBrains)
-* One editor to rule them all?
-* The need for a more modular solution.
-* Standalone language servers.
-* Language Server Protocol.
+[#647]: https://github.com/tc39/ecma402/pull/647
 </script></section><section  data-markdown><script type="text/template">
-## Language servers to the rescue! 🚒
+## TC39 consensus?
+</script></section><section  data-markdown><script type="text/template">
+### Three Stage 4 proposals
 
-![](https://i.imgur.com/JxFzLlR.png)
+* Intl.Segmenter
+* Extend TimeZoneName Option
+* Intl.DisplayNames v2
 </script></section><section  data-markdown><script type="text/template">
-## LSP for my favorite editor 📄
-
-![](https://i.imgur.com/iuzrCmd.png)
-</script></section><section  data-markdown><script type="text/template">
-## LSP for my favorite editor 📄
-
-* Vim has a plugin for LSP, called `vim-lsp`.
-* NeoVim has LSP support inbuilt.
-* If you use non-default plugins, they may support LSP too:
-    * Completion (YCM/Deoplete/CoC)
-    * Linting and Fixing (Ale)
-    * Viewing and Finding Tags (Vista/Tagbar)
-</script></section><section  data-markdown><script type="text/template">
-## So, which servers do you use?
-
-* C/C++ - `clangd`, `cpplint`
-* Rust - `rust-analyzer`, `clippy`
-* JavaScript - `tsserver`, `prettier`
-* Python - `pyright`, `flake8`
-* Ruby - `solargraph`
-</script></section><section  data-markdown><script type="text/template">
-# Thanks! 🙏
-</script></section><section  data-markdown><script type="text/template">
-# Questions? ❓</script></section></div>
+## Thanks</script></section></div>
       <div id="footer">@ryzokuken</div>
     </div>
 
