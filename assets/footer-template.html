@@ -52,7 +52,14 @@
   <body>
     <div class="reveal">
       <div class="slides">{{{slides}}}</div>
-      <div id="footer">@ryzokuken</div>
+      <div id="footer">
+        {{#twitter}}
+          {{.}}
+        {{/twitter}}
+        {{^twitter}}
+          @ryzokuken
+        {{/twitter}}
+      </div>
     </div>
 
     <script src="{{{base}}}/dist/reveal.js"></script>
