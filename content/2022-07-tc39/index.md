@@ -31,7 +31,10 @@ https://tc39.es/code-of-conduct/
 
 ----
 
-Thanks to Dave Nugent and The SF JavaScript Meetup for partnering with TC39 for this event!
+## Special Thanks
+
+- To Dave Nugent and The SF JavaScript Meetup for partnering with TC39 for this event
+- To Ujjwal Sharma (@ryzokuken) for contributing to these slides
 
 ----
 
