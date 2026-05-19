@@ -1,6 +1,10 @@
 ---
 title: Multicore JS
+event: JSConf India
+flag: "🇮🇳"
+date: November 2021
 ---
+
 ## Multicore JS 🚀
 
 ### Past, Present and Future

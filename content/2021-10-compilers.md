@@ -1,5 +1,7 @@
 ---
 title: My dev environment is the GOAT
+event: Compilers Codecamp
+date: October 2021
 theme: night
 ---
 

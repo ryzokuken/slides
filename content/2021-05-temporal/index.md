@@ -1,8 +1,11 @@
 ---
 title: How to outsmart time
+event: Compilers Codecamp
+date: May 2021
 footerFirst: How to outsmart time
 footerSecond: Ujjwal Sharma (@ryzokuken), Compilers Codecamp
 ---
+
 <!-- .slide: data-cover -->
 
 # How to outsmart time 🧠🕒 <!-- .element: class="r-fit-text" -->

@@ -1,6 +1,11 @@
 ---
 title: TC39 Demystified
+event: JSLovers Delhi
+location: Delhi
+flag: "🇮🇳"
+date: August 2021
 ---
+
 # TC39 Demystified 🔭
 
 ## Ujjwal Sharma (@ryzokuken)

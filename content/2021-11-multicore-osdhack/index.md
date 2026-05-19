@@ -1,6 +1,9 @@
 ---
 title: Multicore JS
+event: OSDHack '22
+date: November 2021
 ---
+
 ## Multicore JS 🚀
 
 ### Past, Present and Future

@@ -1,5 +1,9 @@
 ---
 title: TC39 Demystified, Rif Voronezh
+event: "РИФ Воронеж"
+location: "Воронеж"
+flag: "🇷🇺"
+date: September 2021
 theme: night
 highlightTheme: monokai
 ---

@@ -1,8 +1,12 @@
 ---
 title: How to outsmart time
+event: WD Code
+flag: "🇦🇺"
+date: September 2021
 footerFirst: How to outsmart time
 footerSecond: Ujjwal Sharma (@ryzokuken)
 ---
+
 <!-- .slide: data-cover -->
 
 # How to outsmart time 🧠🕒 <!-- .element: class="r-fit-text" -->

@@ -1,5 +1,8 @@
 ---
 title: TC39 Demystified, JetBrains JavaScript Day
+event: JetBrains JavaScript Day
+flag: "🌐"
+date: October 2021
 theme: night
 highlightTheme: monokai
 ---

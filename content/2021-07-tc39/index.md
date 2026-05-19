@@ -1,6 +1,11 @@
 ---
 title: TC39 Demystified
+event: tc39_study
+location: Japan
+flag: "🇯🇵"
+date: July 2021
 ---
+
 # TC39 Demystified 🔭
 
 ## Ujjwal Sharma (@ryzokuken)

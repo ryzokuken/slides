@@ -1,5 +1,9 @@
 ---
 title: TC39 on the Latest in ECMAScript Standards
+event: TC39 Plenary
+location: San Francisco
+flag: "🇺🇸"
+date: July 2022
 twitter: "@_sffc"
 ---
 

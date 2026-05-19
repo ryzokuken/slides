@@ -1,5 +1,9 @@
 ---
 title: TC39 Demystified, CityJS New Delhi
+event: CityJS New Delhi
+location: Delhi
+flag: "🇮🇳"
+date: September 2023
 theme: night
 highlightTheme: monokai
 ---

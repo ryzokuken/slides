@@ -265,6 +265,11 @@
         margin-bottom: var(--space-md);
         flex-grow: 1;
         font-variant-numeric: tabular-nums;
+        min-height: 1.5em;
+      }
+      .deck-meta:empty {
+        flex-grow: 1;
+        margin-bottom: var(--space-md);
       }
 
       .deck-links {
@@ -417,7 +422,11 @@
               {{^title}}{{fileName}}{{/title}}
             </a>
           </div>
-          <div class="deck-meta">{{filePath}}</div>
+          {{#event}}<div class="deck-event">{{event}}</div>{{/event}}
+          <div class="deck-meta"
+               data-flag="{{flag}}"
+               data-location="{{location}}"
+               data-date="{{date}}"></div>
           <div class="deck-links">
             <a class="deck-chip" href="{{filePath}}">view</a>
           </div>
@@ -449,6 +458,14 @@
           .sort((a, b) => b.dataset.path.localeCompare(a.dataset.path))
           .forEach((node) => grid.appendChild(node));
       }
+
+      // Compose meta line from data-attributes: "🇯🇵 Tokyo · July 2021".
+      document.querySelectorAll(".deck-meta").forEach((el) => {
+        const { flag, location, date } = el.dataset;
+        const head = [flag, location].filter(Boolean).join(" ");
+        const tail = date || "";
+        el.textContent = head && tail ? `${head} · ${tail}` : head || tail;
+      });
 
       // Theme switcher (auto = follow OS).
       const root = document.documentElement;

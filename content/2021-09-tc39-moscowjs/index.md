@@ -1,5 +1,9 @@
 ---
 title: TC39 Demystified, MoscowJS 50
+event: MoscowJS 50
+location: "Москва"
+flag: "🇷🇺"
+date: September 2021
 theme: night
 highlightTheme: monokai
 ---

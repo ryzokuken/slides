@@ -1,5 +1,7 @@
 ---
 title: Date and Time on the Internet
+event: IETF 110
+date: March 2021
 ---
 
 # Date and Time on the Internet

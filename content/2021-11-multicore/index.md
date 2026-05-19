@@ -1,6 +1,11 @@
 ---
 title: Multicore JS
+event: HolyJS Moscow
+location: "Москва"
+flag: "🇷🇺"
+date: November 2021
 ---
+
 ## Multicore JS 🚀
 
 ### Past, Present and Future
