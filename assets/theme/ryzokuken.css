@@ -1,0 +1,628 @@
+/* ─────────────────────────────────────────────────────────────
+   ryzokuken.css — personal reveal.js theme
+   Brutalist · terminal · JetBrains Mono · TC39 Orange
+   Author: Ujjwal Sharma (@ryzokuken)
+
+   Designed for reveal.js 5.x. Drop in via:
+       reveal-md slides.md --css ryzokuken.css
+   …or in a standalone deck, link AFTER reveal.css.
+
+   Width is fixed at 1280×720 by reveal-md/reveal.js — set the
+   same in Reveal.initialize({ width: 1280, height: 720 }).
+
+   THEMES
+     <body>                          → dark (default, slides feel bolder projected)
+     <body data-theme="light">       → light (matches ryzokuken.dev)
+   You can also flip a single slide with class="light" / "dark" on the <section>.
+
+   SLIDE CLASSES (add via reveal-md `<!-- .slide: class="…" -->`)
+     .title       Title slide. `> ` prompt, big hook, byline pill, meeting meta.
+     .divider     Section divider — big heading, optional ghost number.
+     .consensus   The "Consensus?" question slide — big question, asks the room.
+     .thanks      Closing slide — `$ Thanks!` plus handle.
+     (no class)   Default slide: `$ ` h2, orange-dash bullets, code with offset shadow.
+   ───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/JetBrainsMono-Variable.woff2") format("woff2-variations");
+}
+
+/* ─── tokens ─────────────────────────────────────────────────── */
+:root {
+  --accent: #FC7C00;        /* TC39 Orange — the only hue */
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+
+  /* dark (default) */
+  --bg:        #0e0d10;
+  --fg:        oklch(96% 0.008 70);
+  --fg-sec:    color-mix(in oklch, var(--fg) 78%, var(--bg));
+  --rule:      var(--fg);
+  --code-bg:   #f7f4ee;     /* invert: ink-on-cream code on dark slide */
+  --code-fg:   #0e0d10;
+  --code-com:  #6e6a62;
+}
+
+body[data-theme="light"],
+.reveal section.light {
+  --bg:        #f7f4ee;
+  --fg:        oklch(12% 0.015 50);
+  --fg-sec:    color-mix(in oklch, var(--fg) 84%, var(--bg));
+  --rule:      var(--fg);
+  --code-bg:   #0e0d10;     /* invert: cream-on-ink code on light slide */
+  --code-fg:   #f7f4ee;
+  --code-com:  #8a857d;
+}
+
+.reveal section.dark {
+  --bg:        #0e0d10;
+  --fg:        oklch(96% 0.008 70);
+  --fg-sec:    color-mix(in oklch, var(--fg) 78%, var(--bg));
+  --rule:      var(--fg);
+  --code-bg:   #f7f4ee;
+  --code-fg:   #0e0d10;
+  --code-com:  #6e6a62;
+}
+
+/* ─── shell ──────────────────────────────────────────────────── */
+html, body { background: var(--bg); }
+
+.reveal-viewport { background: var(--bg) !important; }
+.reveal .slide-background-content { background: var(--bg) !important; }
+
+.reveal {
+  font-family: var(--font-mono);
+  color: var(--fg);
+  font-weight: 400;
+  font-size: 28px;        /* base — overridden everywhere intentional */
+  line-height: 1.45;
+}
+
+/* slide background follows the per-section --bg too (so .light/.dark sections paint themselves) */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  background: var(--bg);
+  color: var(--fg);
+  text-align: left;
+  padding: 56px 72px 80px;
+  box-sizing: border-box;
+}
+
+/* selection + caret */
+.reveal ::selection { background: var(--accent); color: var(--bg); }
+
+/* ─── footer ─────────────────────────────────────────────────── */
+.reveal .slides > section::after {
+  content: "@ryzokuken";
+  position: absolute;
+  left: 72px;
+  bottom: 26px;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--fg-sec);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+.reveal .slides > section[data-no-footer]::after { display: none; }
+
+/* Hide the shared footer-template.html `#footer` div — this theme owns the footer. */
+#footer { display: none; }
+
+/* reveal.js native slide number, restyled */
+.reveal .slide-number {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--fg-sec);
+  background: transparent;
+  right: 60px;
+  bottom: 24px;
+  padding: 0;
+}
+.reveal .slide-number-delimiter { color: var(--fg-sec); margin: 0 .25ch; }
+
+/* progress bar — flatten + recolor */
+.reveal .progress {
+  height: 4px;
+  background: color-mix(in oklch, var(--fg) 15%, var(--bg));
+  color: var(--accent);
+}
+.reveal .progress span { background: var(--accent); }
+
+/* controls — sharpen & monochromify */
+.reveal .controls { color: var(--fg-sec); }
+.reveal .controls button:hover { color: var(--accent); }
+
+/* ─── typography defaults ────────────────────────────────────── */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: var(--font-mono);
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  margin: 0 0 28px;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+/* Slide heading — the `$ <thing>` prompt that fronts most slides */
+.reveal h2 {
+  font-size: 56px;
+  font-weight: 800;
+  border-bottom: 4px solid var(--rule);
+  padding-bottom: 12px;
+  width: fit-content;
+  max-width: 100%;
+  line-height: 1.08;
+}
+.reveal h2::before {
+  content: "$ ";
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* h3 inside a slide is a sub-heading (e.g., subtitle under h2). Plain, no prompt. */
+.reveal h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+/* h1 — only used by .title and .thanks. Massive, uppercase. */
+.reveal h1 {
+  font-size: 112px;
+  font-weight: 900;
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+/* Links inside headings (e.g. `## [Intl.Segmenter](https://…)`) — keep them
+   muted so the title stays legible; orange the underline. Hover swaps text to
+   orange but does NOT trigger the inline-link background flip (the heading
+   text would disappear into the orange field). */
+.reveal h2 a,
+.reveal h2 a:visited,
+.reveal h3 a,
+.reveal h3 a:visited {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  background: transparent;
+}
+.reveal h2 a:hover,
+.reveal h3 a:hover {
+  color: var(--accent);
+  background: transparent;
+  text-decoration-color: var(--accent);
+}
+
+/* PR-number style inline links inside a heading: `#577` — just an inline
+   link, matching the heading's size. Orange underline gives it presence. */
+.reveal h2 sup, .reveal h3 sup {
+  font-size: inherit;
+  vertical-align: baseline;
+  margin-left: 0;
+}
+
+/* ─── paragraphs, lists ──────────────────────────────────────── */
+.reveal p {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--fg);
+  margin: 0 0 22px;
+  max-width: 1080px;
+}
+
+.reveal ul, .reveal ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 22px;
+  display: block;
+}
+.reveal li {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.32;
+  margin-bottom: 14px;
+  padding-left: 34px;
+  position: relative;
+  color: var(--fg);
+}
+.reveal ul > li::before {
+  content: "-";
+  color: var(--accent);
+  font-weight: 800;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.reveal ol { counter-reset: ol; }
+.reveal ol > li { counter-increment: ol; }
+.reveal ol > li::before {
+  content: counter(ol, decimal-leading-zero) ".";
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.7em;
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  letter-spacing: 0;
+}
+.reveal li ul,
+.reveal li ol { margin: 10px 0 4px 8px; }
+.reveal li li {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--fg-sec);
+  margin-bottom: 6px;
+}
+.reveal li li::before { content: "·"; color: var(--accent); }
+
+.reveal strong, .reveal b {
+  font-weight: 800;
+  color: var(--fg);
+}
+.reveal em, .reveal i {
+  font-style: italic;
+  color: var(--fg);
+}
+
+/* Inline links (in bullets, prose) — signature ryzokuken.dev hover:
+   orange bg, bg color text, no underline.  */
+.reveal a,
+.reveal a:visited {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+.reveal a:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration-color: transparent;
+}
+
+/* Inline `code` — tight tag-style, no full block */
+.reveal :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: color-mix(in oklch, var(--fg) 10%, var(--bg));
+  color: var(--fg);
+  border-radius: 0;
+}
+
+/* ─── code blocks ────────────────────────────────────────────── */
+.reveal pre {
+  display: block;
+  width: 100%;
+  margin: 18px 0 22px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 500;
+  box-shadow: 12px 12px 0 var(--accent);
+  border: 4px solid var(--rule);
+  background: var(--code-bg);
+  color: var(--code-fg);
+  max-height: 460px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.reveal pre code {
+  display: block;
+  padding: 22px 28px;
+  background: var(--code-bg) !important;
+  color: var(--code-fg) !important;
+  font-family: var(--font-mono);
+  font-size: inherit;
+  line-height: inherit;
+  border: none;
+  white-space: pre;
+  overflow: visible;
+  max-height: none;
+  word-wrap: normal;
+}
+
+/* highlight.js token overrides — keep it monochrome + orange + green */
+.reveal pre code .hljs-keyword,
+.reveal pre code .hljs-built_in,
+.reveal pre code .hljs-literal {
+  color: var(--accent);
+  font-weight: 700;
+}
+.reveal pre code .hljs-string,
+.reveal pre code .hljs-regexp { color: oklch(52% 0.16 145); font-weight: 600; }
+.reveal pre code .hljs-number,
+.reveal pre code .hljs-symbol { color: oklch(50% 0.14 250); font-weight: 700; }
+.reveal pre code .hljs-comment,
+.reveal pre code .hljs-quote  { color: var(--code-com); font-style: italic; }
+.reveal pre code .hljs-function,
+.reveal pre code .hljs-title  { color: oklch(48% 0.14 80); font-weight: 700; }
+.reveal pre code .hljs-variable,
+.reveal pre code .hljs-attr   { color: var(--code-fg); }
+.reveal pre code .hljs-params,
+.reveal pre code .hljs-property { color: var(--code-fg); }
+
+/* When a slide has both a bullet list AND code, keep them stacked but tighter. */
+.reveal section ul + pre,
+.reveal section ol + pre { margin-top: 8px; }
+
+/* ─── blockquote (used for callouts) ─────────────────────────── */
+.reveal blockquote {
+  border: none;
+  border-left: 10px solid var(--accent);
+  background: transparent;
+  padding: 8px 0 8px 40px;
+  margin: 0 0 22px;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.25;
+  color: var(--fg);
+  box-shadow: none;
+  width: auto;
+  max-width: 1000px;
+}
+
+/* ─── tables ─────────────────────────────────────────────────── */
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 24px;
+}
+.reveal table th,
+.reveal table td {
+  border: 2px solid var(--rule);
+  padding: 10px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+.reveal table th {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* ─── images ─────────────────────────────────────────────────── */
+.reveal img,
+.reveal section img {
+  border: 4px solid var(--rule);
+  border-radius: 0;
+  background: var(--bg);
+  box-shadow: 12px 12px 0 var(--accent);
+  margin: 0 0 22px;
+  max-height: 480px;
+}
+
+/* ─── horizontal rule ────────────────────────────────────────── */
+.reveal hr {
+  border: none;
+  border-top: 3px solid var(--rule);
+  margin: 24px 0;
+}
+
+/* ─── kbd ────────────────────────────────────────────────────── */
+.reveal kbd {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  font-weight: 700;
+  padding: 2px 8px;
+  border: 2px solid var(--rule);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ═════════════════════════════════════════════════════════════
+   SPECIAL SLIDE CLASSES
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─── .title ─────────────────────────────────────────────────── */
+.reveal section.title {
+  padding: 64px 72px 80px;
+}
+.reveal section.title h1,
+.reveal section.title h2:first-child {
+  font-size: 92px;
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  border-bottom: none;
+  padding-bottom: 0;
+  width: 100%;
+  max-width: 1080px;
+  margin-bottom: 36px;
+}
+.reveal section.title h1::before,
+.reveal section.title h2:first-child::before {
+  content: "> ";
+  color: var(--accent);
+  font-weight: 900;
+}
+/* h3s inside .title double as byline + meeting meta */
+.reveal section.title h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 14px;
+  padding-left: 0;
+}
+.reveal section.title h3:nth-of-type(1) {
+  display: inline-block;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 10px 18px;
+  margin-bottom: 22px;
+}
+.reveal section.title h3:nth-of-type(1)::before {
+  content: "";
+  display: none;
+}
+.reveal section.title h3:nth-of-type(n+2) {
+  color: var(--fg-sec);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: block;
+}
+.reveal section.title p {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--fg);
+  max-width: 1080px;
+  margin-bottom: 32px;
+}
+
+/* ─── .divider ───────────────────────────────────────────────── */
+.reveal section.divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 72px 80px;
+}
+.reveal section.divider h1,
+.reveal section.divider h2 {
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  border-bottom: none;
+  padding-bottom: 0;
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+}
+.reveal section.divider h1::before,
+.reveal section.divider h2::before {
+  content: "";
+  margin: 0;
+}
+/* a `<p class="lbl">part one</p>` above the heading reads as a section tag */
+.reveal section.divider .lbl,
+.reveal section.divider p:first-child {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+.reveal section.divider .lbl::before,
+.reveal section.divider p:first-child::before {
+  content: "// ";
+}
+/* faint ghost number in the corner: <div class="num">02</div> */
+.reveal section.divider .num {
+  position: absolute;
+  right: 72px;
+  bottom: 64px;
+  font-size: 280px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.16;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+/* ─── .consensus  (the "Consensus?" question slide) ──────────── */
+.reveal section.consensus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 72px 80px;
+}
+.reveal section.consensus h1,
+.reveal section.consensus h2 {
+  font-size: 168px;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  width: auto;
+  margin: 0;
+}
+.reveal section.consensus h1::before,
+.reveal section.consensus h2::before {
+  content: "> ";
+  color: var(--accent);
+}
+.reveal section.consensus .lbl,
+.reveal section.consensus p:first-of-type {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--fg-sec);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+
+/* ─── .thanks ────────────────────────────────────────────────── */
+.reveal section.thanks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 72px 80px;
+}
+.reveal section.thanks h1,
+.reveal section.thanks h2 {
+  font-size: 180px;
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  text-transform: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  width: auto;
+  margin: 0 0 28px;
+}
+.reveal section.thanks h1::before,
+.reveal section.thanks h2::before {
+  content: "";
+  display: none;
+}
+.reveal section.thanks p {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--fg-sec);
+  max-width: 1080px;
+}
+.reveal section.thanks .handle {
+  margin-top: 32px;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--fg);
+}
+.reveal section.thanks .handle::before {
+  content: "@";
+  color: var(--accent);
+}
+
+/* ─── .tight  (modifier: smaller bullets, denser slide) ──────── */
+.reveal section.tight li     { font-size: 26px; margin-bottom: 10px; }
+.reveal section.tight pre    { font-size: 19px; }
+.reveal section.tight h2     { font-size: 48px; margin-bottom: 22px; }
+
+/* ─── print / PDF export ─────────────────────────────────────── */
+@media print {
+  .reveal .slides > section { background: var(--bg); }
+}
+
+/* ─── transitions (keep functional, not decorative) ──────────── */
+.reveal .slides section.present { transition: none; }
