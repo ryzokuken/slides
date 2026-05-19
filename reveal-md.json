@@ -2,5 +2,6 @@
   "theme": "blood",
   "highlightTheme": "github",
   "template": "./assets/footer-template.html",
+  "listingTemplate": "./assets/listing-template.html",
   "css": "./assets/style.css"
 }

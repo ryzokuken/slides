@@ -16,6 +16,7 @@ This is a collection of conference/standards talks rendered with [reveal-md](htt
 - `content/` — source of truth. Each talk is either a single `.md` file or a directory containing `slides.md` plus its own assets. Slides use reveal-md's `---` (horizontal) and `--` (vertical) separators and front-matter for per-deck overrides.
 - `assets/` — shared chrome applied to every deck:
   - `footer-template.html` — the `template` referenced in `reveal-md.json`; wraps each deck. Renders an `#footer` div with `@ryzokuken` for decks that don't define their own footer.
+  - `listing-template.html` — the `listingTemplate` referenced in `reveal-md.json`. Customises reveal-md's deck-index page (`docs/index.html`) so it matches ryzokuken.dev's nav + card aesthetic (JetBrains Mono via Google Fonts, TC39 Orange accent, hard-edged offset shadows, sticky nav, theme switcher with `data-theme` + `localStorage`). Self-contained: tokens are inlined; no external CSS dependency beyond the Google Fonts link.
   - `style.css` — global CSS injected into every deck (currently empty, available for cross-deck tweaks).
   - `theme/igalia.css`, `theme/images/`, `theme/fonts/` — Igalia-branded reveal.js theme + its assets, opt-in per deck.
   - `theme/ryzokuken.css` — personal `ryzokuken.dev` reveal.js theme (JetBrains Mono, TC39 Orange `#FC7C00`, brutalist/terminal). Opt-in per deck — **not** the global default. Designed for the recurring ECMA-402 status-update shape; not appropriate for every talk. Hides `#footer` since it renders its own via `::after`.
